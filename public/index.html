@@ -58,7 +58,13 @@
       document.getElementById('description-span').innerHTML= desc
       document.getElementById('temperature').innerHTML= temp
 
-      if (desc == "few clouds"){
+      if (temp > 40){
+        document.getElementById('adv').innerHTML = "Advisory for extreme heat. Irrigate crops extremely well. Manage water for livestock"
+      }
+      else if (temp < 10){
+        document.getElementById('adv').innerHTML = "Advisory for extreme cold. Farming in such conditions is not advised. Keep livestock indoors and warm"
+      }
+      else if (desc == "few clouds"){
         document.getElementById('adv').innerHTML = "Advisory for few clouds. Irrigate crops well as there will be no rainfall. Chemical spraying can be carried out during this period"
       }
       else if (desc == 'light rain'){
