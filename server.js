@@ -8,15 +8,14 @@ const fs = require('fs')
 
 app.set('view engine', 'ejs')
 app.use(express.static("public"))
-app.use(express.urlencoded({ extended: true }))
+//app.use(express.urlencoded({ extended: true }))
 
-app.get("/", function (req, res) {
-    //res.download('second.js')
-    console.log(Date())
-    console.log("Server is running on port", port)
-    res.send("Hi")
-    //res.render("contact.html", {text: 'Hello'})
+// app.get("/", function (req, res) {
+//     res.render("index")
+// })
 
+app.get("/tips", function (req, res) {
+    res.render("TodaysTips.ejs")
 })
 
 app.listen(port)
