@@ -1,5 +1,4 @@
 const express = require("express")
-var XMLHttpRequest = require("xhr2").XMLHttpRequest;
 
 const port = 3000
 const app = express()

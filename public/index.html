@@ -20,7 +20,7 @@
       <div class="title" id="LiveTime"></div>
       <ul class="list-items">
         <li><a href="/"><i class="fas fa-home"></i>Home</a></li>
-        <li><a href="WeatherNews.html"><i class="fas fa-cloud-sun-rain"></i>Weather news</a></li>
+        <li><a href="#"><i class="fas fa-cloud-sun-rain"></i>Weather news</a></li>
         <li><a href="#"><i class="fas fa-search-location"></i>Find my location</a></li>
         <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
         <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
@@ -35,9 +35,10 @@
           <button type ="submit" class = "button" value="Submit">Submit</button>
       </div>
       <div>
-        <p id="city">Hello</p>
-        <p id="temperature">Hello</p>
-        <p id="description-span">Hello</p>
+        <p id="city"></p>
+        <p id="temperature"></p>
+        <p id="description-span"></p>
+        <p class = "advisory" id="adv"></p>
       </div>
     </div>
   </div>
@@ -50,12 +51,32 @@
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=`+inputValue.value+`&units=metric&appid=94f893897aa4484cce76dd0174a34ec9`)
       .then(response => response.json())
       .then(data => {
-        const name = data['name']
+      const name = data['name']
       const temp = data['main']['temp']
       const desc = data['weather'][0]['description']
       document.getElementById('city').innerHTML= name
       document.getElementById('description-span').innerHTML= desc
       document.getElementById('temperature').innerHTML= temp
+
+      if (desc == "few clouds"){
+        document.getElementById('adv').innerHTML = "Advisory for few clouds. Irrigate crops well as there will be no rainfall. Chemical spraying can be carried out during this period"
+      }
+      else if (desc == 'light rain'){
+        document.getElementById('adv').innerHTML = "Advisory for light rain. Withhold irrigation, chemical spraying for standing crops"
+      }
+      else if (desc == 'rain'){
+        document.getElementById('adv').innerHTML = "Advisory for heavy rain. Withhold irrigation and add cover crops to your farm. Make sure there is no soil erosion. Withhold chemical spraying as well."
+      }
+
+      else if (desc == 'thunderstorm'){
+        document.getElementById('adv').innerHTML = "Advisory for thunderstorm. Withhold irrigation and add cover crops to your farm. Make sure there is no soil erosion. Withhold chemical spraying as well."
+      }
+      else if (desc == 'clear sky'){
+        document.getElementById('adv').innerHTML = "Advisory for clear sky. Irrigate crops well as there will be no rainfall. Chemical spraying can be carried out during this period"
+      }
+      else{
+        document.getElementById('adv').innerHTML = "No suitable advisory found"
+      }
       })
       .catch(err => alert("Enter a valid city name"))
     })
