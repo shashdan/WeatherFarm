@@ -1,0 +1,23 @@
+{
+  "name": "weatherfarm",
+  "version": "1.0.0",
+  "description": "Project for DotSlash 5.0 made by Shashikant Dangi, Yash Shah and Nitin Rathod",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shashdan/WeatherFarm.git"
+  },
+  "author": "Shashikant Dangi, Yash Shah, Nitin Rathod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shashdan/WeatherFarm/issues"
+  },
+  "homepage": "https://github.com/shashdan/WeatherFarm#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
