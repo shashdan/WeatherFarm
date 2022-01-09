@@ -8,8 +8,6 @@ app.set('view engine', 'ejs')
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 
-app.get("/advisory", function(req, res){
-})
 
 app.post("/", function(req, res){
     const city = req.body.city

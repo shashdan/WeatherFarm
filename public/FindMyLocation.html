@@ -1,4 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+<script>
+    console.log('hgh');
+
+function startTime() {
+    const today = new Date();  
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('LiveTime').innerHTML =  h + ":" + m + ":" + s;
+    setTimeout(startTime, 1000);
+  }
+  
+  function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+  }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -207,3 +233,74 @@
     top: 30%;
     left: 40%;
 }
+    body {
+        background-image: url('public/bg.jpg');
+    }
+    
+    #try {
+        position: absolute;
+        left: 45%;
+        height: 40px;
+        width: 50px;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+    }
+    
+    #demo {
+        position: absolute;
+        left: 35%;
+        font-weight: bold;
+    }
+</style>
+
+<body onload="startTime()">
+    <div class="wrapper">
+        <input type="checkbox" id="btn" hidden>
+        <label for="btn" class="menu-btn">
+      <i class="fas fa-bars"></i>
+      <i class="fas fa-times"></i>
+    </label>
+        <nav id="sidebar">
+            <div class="title" id="LiveTime"></div>
+            <ul class="list-items">
+                <li><a href="/"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="/WeatherNews.html"><i class="fas fa-cloud-sun-rain"></i>Weather news</a></li>
+                <li><a href="/FindMyLocation.html"><i class="fas fa-search-location"></i>Find my location</a></li>
+                <li><a href="/aboutUs.html"><i class="fas fa-user"></i>About us</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="location">
+        <h2><b> Click the button to get your coordinates.</b></h2>
+
+        <button onclick="getLocation()" id="try">Try It</button>
+        <br><br><br>
+
+        <p id="demo"></p>
+    </div>
+
+    <script src="public/index.js"></script>
+
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br><br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+
+</body>
+
+</html>
